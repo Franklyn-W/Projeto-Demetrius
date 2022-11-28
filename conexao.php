@@ -14,7 +14,7 @@ if(!@($conexao = pg_connect("host=$host dbname=$dbname port=$port user=$user pas
 
 function conexao_banco()
 {
-    $PDO = new PDO('pgslq:host=localhost; dbname=ProjetoDemetrius; port=5432; user=postgres; password=Parna10!')
+    $PDO = new PDO('pgsql:host=localhost;port=5432;dbname=ProjetoDemetrius;user=postgres;password=Parna10!')
     or die ('Conexao deu ruim');
     return $PDO;
 }

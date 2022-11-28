@@ -1,15 +1,8 @@
 <?php
 session_start();
-require_once('conexao_banco.php');
+require_once('conexao.php');
 
-$login = $_SESSION['usuario'];
-
-// cadastrar usuario
-
-//listar usuarios
-if(array_key_exists('ListarUsuarios', $_POST)) {
-    header('listar_usuarios.php'); // identifica click no botao e chama a funcao
-}
+$usuario = $_SESSION['usuario'];
 
 
 
@@ -29,10 +22,9 @@ if(array_key_exists('ListarUsuarios', $_POST)) {
         <center>
             <h1>Bem vindo!</h1>
             <nav>
-                <a href="teladecadastro.php"><button>Tela de Cadastro de Usuarios</button></a>
-                <form method="post"><br>
-                    <input type="submit" name="ListarUsuarios" class="button" value="Listar Usuarios" />
-                </form>
+                <a href="4-listar_usuarios.php">Usuarios Cadastrados</a>
+                <a href="3-teladecadastro.php">Cadastrar Novo Usuario</a>
+                <a href="6-logout.php">Sair</a>
             </nav>
         </center>
     </body>

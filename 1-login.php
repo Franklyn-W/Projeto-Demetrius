@@ -1,6 +1,3 @@
-<?php
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,12 +7,10 @@
         <title>Tela de login</title>
     </head>
     <body>
-        <form action="autenticar_usuario.php" method="post">
-            <div><center>
-                <label>Usurio: </label><input type="text" name="usuario">
-                <br>
-                <label>Senha: </label><input type="password" name="senha">
-                <br>
+        <form id='login' action="1-1autenticar_usuario.php" method="POST">
+            <div><center> 
+                Usuario: <input type="text" name="usuario"><br>
+                Senha: <input type="password" name="senha"><br>
                 <input type="submit" value="Acessar sistema" name="entrar">
             </center></div>
         </form>

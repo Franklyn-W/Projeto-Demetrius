@@ -1,20 +1,23 @@
 <?php
 
-require_once('conexao_banco.php');
+require_once('conexao.php');
 
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 
-$select = "SELECT usuario, senha FROM usuarios WHERE usuario = '$usuario' and senha = '$senha'";
+$select = "SELECT usuario, senha FROM dados WHERE usuario = '$usuario' AND senha = '$senha'";
 $execQuery = pg_exec($conexao, $select);
-$quebrarLinhas = pg_fetch_row($execQuery);
+$linhas = pg_fetch_row($execQuery);
 
-if ($usuario == $quebrarLinhas[0] && $senha == $quebrarLinhas[1]) {
+
+if ($usuario == $linhas[0])
+{
     session_start(); // Inicia a sessao do usuario
-    $_SESSION['usuario'] = $quebrarLinhas[0]; //Cria variavel global da sessao com o nome do usuario
-    header('location: inicio.php');
+    $_SESSION['usuario'] = $linhas[0]; //Cria variavel global da sessao com o nome do usuario
+    header('location: 2-inicio.php');
 }
-else {
-    header('location: naolocalizado.php');
+else 
+{
+    header('location: 6-naolocalizado.php');
 }
-?>
+//?>

@@ -1,6 +1,9 @@
 <?php
 
 
+$lista_bairros = file_get_contents('http://enderecos.metheora.com/api/cidade/4964/bairros');
+$json = json_decode($lista_bairros);
+
 ?>
 
 <!DOCTYPE html>
@@ -17,19 +20,23 @@
     <center>
         <h1>Tela de Cadastro/Edição de Usuarios</h1>
 
-        <form id="cadastro" action="inserirusuario.php" method="POST">
-            Usuario: <input type="text" name="usuario" id="usuario"><br><br>
-            Senha: <input type="password" name="senha" id="senha"><br><br>
-            Nome Completo: <input type="text" name="nomecompleto" id="nomecompleto"><br><br>
-            Data de Nascimento: <input type="date" name="datanascimento" id="datanascimento"><br><br>
-            CPF: <input type="text" name="cpf" id="cpf"><br><br><br>
+        <form id="cadastro" action="3-1inserirusuario.php" method="POST">
+            Nome : <input type="text" name="nome_completo" id="nome_completo"><br><br>
+            CPF: <input type="text" name="cpf" id="cpf"><br><br>
+            Data de Nascimento: <input type="date" name="dt_nasc" id="dt_nasc"><br><br>
 
-            CEP: <input type="text" name="cep" id="cep"><br><br>
-            RUA: <input type="text" name="rua" id="rua"><br><br>
+            Rua: <input type="text" name="rua" id="rua"><br><br>
             Numero: <input type="text" name="numerocasa" id="numerocasa"><br><br>
-            Bairro: <input type="text" name="bairro" id="bairro"><br><br>
-            Cidade: <input type="text" name="cidade" id="cidade">
-            
+            Complemento: <input type="text" name="complemento" id="complemento"><br><br>
+            Bairros <select name="bairro">
+            <?php
+            foreach($json as $bairro) {
+            ?> <option value="<?php echo $bairro->Id; ?>"><?php echo $bairro->Nome;?></option> <?php } ?>
+        </select> <br> <br>
+
+            Usuario : <input type="text" name="usuario" id="usuario"><br><br>
+            Senha: <input type="password" name="senha" id="senha"><br><br>
+
             <input type="submit" name="cadastrar" value="Cadastrar usuario">
         </form><br>
 
