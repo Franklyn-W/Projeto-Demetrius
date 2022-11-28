@@ -29,6 +29,7 @@
             Numero: <input type="text" name="numerocasa" id="numerocasa"><br><br>
             Bairro: <input type="text" name="bairro" id="bairro"><br><br>
             Cidade: <input type="text" name="cidade" id="cidade">
+            
             <input type="submit" name="cadastrar" value="Cadastrar usuario">
         </form><br>
 

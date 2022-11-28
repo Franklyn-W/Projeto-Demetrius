@@ -5,7 +5,7 @@ require_once('conexao_banco.php');
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 
-$select = "SELECT * FROM view_autenticar_usuario WHERE usuario = '$usuario' and senha = '$senha'";
+$select = "SELECT usuario, senha FROM usuarios WHERE usuario = '$usuario' and senha = '$senha'";
 $execQuery = pg_exec($conexao, $select);
 $quebrarLinhas = pg_fetch_row($execQuery);
 

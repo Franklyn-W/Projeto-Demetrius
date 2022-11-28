@@ -2,25 +2,16 @@
 session_start();
 require_once('conexao_banco.php');
 
-$login = $_SESSION['login'];
+$login = $_SESSION['usuario'];
 
 // cadastrar usuario
 
 //listar usuarios
 if(array_key_exists('ListarUsuarios', $_POST)) {
-    retornarUsuarios(); // identifica click no botao e chama a funcao
+    header('listar_usuarios.php'); // identifica click no botao e chama a funcao
 }
 
-function retornarUsuarios(){
-$consulta = conexao_banco()->prepare("SELECT * view"); // criar view de retorno do nome_completo dos usuarios
-$consulta->execute();
-$listaUsuarios = $consulta->fetchAll(PDO::FETCH_ASSOC);
-for ($i=0; $i < $consulta->rowCount(); $i++) { 
-     $usuario = $listaUsuarios[$i];
-     echo 'Nome: '.$usuario.['nome_completo'];
-     echo 'Nome: '.$usuario.['matricula'];
-    }
-}
+
 
 ?>
 
