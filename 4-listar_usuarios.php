@@ -2,7 +2,7 @@
 
 session_start();
 require_once('conexao.php'); 
-$consulta = conexao_banco()->prepare("SELECT nome_completo,cpf FROM dados ORDER BY nome_completo");
+$consulta = conexao_banco()->prepare("SELECT * FROM view_listar_usuarios ORDER BY codinome");
 $consulta->execute();
 $usuarios = $consulta->fetchall(PDO::FETCH_ASSOC);
 
@@ -29,11 +29,13 @@ $usuarios = $consulta->fetchall(PDO::FETCH_ASSOC);
        
         ?>
         <form id="editar" action="5-alterardados.php" method="POST">
-            <?php echo $usuario['cpf']; ?> - <?php echo $usuario['nome_completo']; ?>
+            <?php echo $usuario['cpf']; ?> - <?php echo $usuario['codinome']; ?>
             <input type="hidden" name="cpf" value="<?php echo $usuario['cpf']; ?>">
             <input type="submit" value="Editar">
         </form>
         <?php  }?>
+
+        <a href="2-inicio.php"><button>Voltar para inicio</button></a>
     </center>
 
 

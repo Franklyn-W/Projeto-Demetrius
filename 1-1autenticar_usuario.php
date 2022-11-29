@@ -5,7 +5,7 @@ require_once('conexao.php');
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 
-$select = "SELECT usuario, senha FROM dados WHERE usuario = '$usuario' AND senha = '$senha'";
+$select = "SELECT * FROM view_autenticar WHERE credencial = '$usuario' AND senha = '$senha'";
 $execQuery = pg_exec($conexao, $select);
 $linhas = pg_fetch_row($execQuery);
 

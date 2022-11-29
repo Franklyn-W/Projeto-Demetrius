@@ -6,7 +6,7 @@ $cpf = $_POST['cpf'];
 $lista_bairros = file_get_contents('http://enderecos.metheora.com/api/cidade/4964/bairros');
 $json = json_decode($lista_bairros);
 
-$select = "SELECT * FROM dados WHERE cpf = '$cpf'";
+$select = "SELECT * FROM view_atualizar_usuario WHERE cpf = '$cpf'";
 $query = pg_exec($conexao, $select);
 $linha = pg_fetch_row($query);
 
@@ -26,9 +26,9 @@ $linha = pg_fetch_row($query);
     <center>
         <h1>Tela de Cadastro/Edição de Usuarios</h1>
 
-        <form id="cadastro" action="3-1inserirusuario.php" method="POST">
+        <form id="cadastro" action="5-1queryupdate.php" method="POST">
             Nome : <input type="text" name="nome_completo" id="nome_completo" value="<?php echo $linha[0]?>"><br><br>
-            CPF: <input type="text" name="cpf" id="cpf" value="<?php echo $linha[1]?>"><br><br>
+            CPF: <input type="text" name="cpf" id="cpf" value="<?php echo $linha[1]?>" readonly><br><br>
             Data de Nascimento: <input type="date" name="dt_nasc" id="dt_nasc" value="<?php echo $linha[2]?>"><br><br>
 
             Rua: <input type="text" name="rua" id="rua" value="<?php echo $linha[3]?>"><br><br>
@@ -43,7 +43,8 @@ $linha = pg_fetch_row($query);
             Usuario : <input type="text" name="usuario" id="usuario" value="<?php echo $linha[7]?>"><br><br>
             Senha: <input type="password" name="senha" id="senha" value="<?php echo $linha[8]?>"><br><br>
 
-            <input type="submit" name="cadastrar" value="Cadastrar usuario">
+            <input type="submit" name="atualizar" value="Atualizar usuario">
+            <a href="4-listar_usuarios.php"><button>Voltar para inicio</button></a>
         </form><br>
 
     </center>
